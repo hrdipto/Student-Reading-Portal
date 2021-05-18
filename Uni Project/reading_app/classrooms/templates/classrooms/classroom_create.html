@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    {% if request.user.user_type == 'teacher' %}
+        <p>I am a cool teacher</p>
+    {% else %}
+        <meta http-equiv="REFRESH" content="0;url={% url 'classrooms:list' %}">
+    {% endif %}
+    <h2>Classroom create</h2>
+
+    <form class="site-form" action="{% url 'classrooms:create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+
+        <input type="submit" value="Create">
+    </form>  
+
+{% endblock %}

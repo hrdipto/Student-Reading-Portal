@@ -1,0 +1,48 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <h2>Classroom list</h2>
+    {% if request.user.user_type == 'teacher' %}
+        <p>I am a teacher.</p>
+        <p><a href="{% url 'classrooms:create' %}">Create</a></p>
+        
+    {% endif %}
+
+    <div class="classrooms">
+        {% for classroom in classrooms %}
+            {% if classroom.teacher.email == request.user.email %}
+                <div class="classroom">
+                    <h2><a href="{% url 'classrooms:detail' code=classroom.code %}">{{ classroom.name }}</a></h2>
+                    <!-- <p>{{ classroom.name }}</p> -->
+                    <!-- <p>{{ classroom.teacher }}</p>
+                    <p>{{ request.user.email }}</p> -->
+                    <p>{{ classroom.justshow }}</p>
+                    <p>{{ classroom.date }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block student %}
+    {% if request.user.user_type == 'student' %}
+        <p>I am a student.</p>
+        <p><a href="{% url 'classrooms:join' %}">Join</a></p>
+    {% endif %}
+
+    <div class="classrooms">
+        {% for code_student in codes_student %}
+            {% for classroom in classrooms %}
+                {% if classroom.code == code_student.code %}
+                    <div class="classroom">
+                        <h2><a href="{% url 'classrooms:detail' code=classroom.code %}">{{ classroom.name }}</a></h2>
+
+                        <p>{{ classroom.justshow }}</p>
+                        <p>{{ classroom.date }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

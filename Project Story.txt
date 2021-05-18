@@ -1,0 +1,6 @@
+There is a reading app which has a teacher section and a student section and both can sign up themselves using auth sign in.
+
+The teacher will have a desktop platform through which he will be able create a group/class which will have it's unique group/class code. After creation the teacher will be able to upload pdf files in the group for the students to read. The reading progress for each of the students regarding each of the files will be available to the teacher in a specific screen. The progress may further be varified by entering each of their profiles regarding that file and there the photos of the eyes of the students will be uploaded by the system in specific intervals.
+
+The students can join the group/class of a teacher by providing the class code. Then they can read the pdf's as they wish. While they read the progress will be recorded. Also to verify the progress the system will monitor the eyes of the reader to see if he's actually reading or not and will also take a picture at random intervals as a reading proof.
+

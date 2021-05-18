@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <h2>Classroom</h2>
+    <div class="classroom-detail">
+        <div class="classroom">
+            <h2>{{ classroom.name }}</h2>
+            <p>Class code: {{ classroom.code }}</p>
+            {% if classroom.upload %}
+                <p><a href="{{ classroom.upload.url }}" target="_blank">Click here</a> to see uploaded file</p>
+            {% endif %} 
+            <p>Date created: {{ classroom.date }}</p>
+        </div>
+    </div>
+{% endblock %}

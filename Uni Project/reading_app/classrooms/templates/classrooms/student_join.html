@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block student %}
+    {% if request.user.user_type == 'student' %}
+        <p>I am a great student</p>
+    {% else %}
+        <meta http-equiv="REFRESH" content="0;url={% url 'classrooms:list' %}">
+    {% endif %}
+    <h2>Classroom Join</h2>
+
+    <form class="site-form" action="{% url 'classrooms:join' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+
+        <input type="submit" value="Join">
+    </form>  
+
+{% endblock %}

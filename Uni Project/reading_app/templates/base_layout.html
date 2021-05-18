@@ -1,0 +1,30 @@
+{% load static from static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Classroom list</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1><a href="{% url 'classrooms:list' %}"><img src="{% static 'logo.svg' %}" width="105px"/></a></h1>
+        
+        {% if request.user.is_authenticated %}
+            <p>Hello, {{request.user.username}} | <a href="{% url 'accounts:logout' %}">Logout</a></p>
+        {% else %}
+            <p><a href="{% url 'accounts:signup' %}">Register</a> | <a href="{% url 'accounts:login' %}">Login</a></p>
+        {% endif %}
+        
+        {% block content %}
+
+        {% endblock %}
+
+        {% block student %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>
